@@ -2,4 +2,6 @@ services:
   database:
     image: "postgres:16.0-alpine3.18"
     environment:
-      - POSTGRES_PASSWORD=pwd_local_host
+      - POSTGRES_PASSWORD=local_password
+    ports:
+      - 5432:5432

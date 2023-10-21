@@ -8,7 +8,9 @@
     "lint:check": "npx prettier --check .",
     "lint:fix": "npx prettier --write .",
     "test": "npx jest",
-    "test:watch": "npx jest --watch"
+    "test:watch": "npx jest --watchAll",
+    "dev:infra:start": "docker compose -f infra/compose.yaml up -d",
+    "dev:infra:stop": "docker compose -f infra/compose.yaml stop"
   },
   "keywords": [],
   "author": "",
