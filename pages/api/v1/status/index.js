@@ -1,4 +1,4 @@
-import database from "../../../../infra/database";
+import database from "infra/database";
 
 async function handleStatus(_req, res) {
   const result = await database.query('SHOW max_connections; SHOW superuser_reserved_connections;');
