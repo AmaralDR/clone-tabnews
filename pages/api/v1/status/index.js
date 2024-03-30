@@ -1,6 +1,6 @@
 import database from "infra/database";
 
-async function handleStatus(_req, res) {
+async function handlerStatus(_req, res) {
   const result = await database.query('SHOW server_version; SHOW max_connections; SHOW superuser_reserved_connections;');
   const [serverVersion, maxConnections, superUserReservedConnections] = result;
   const [serverVersionValue] = serverVersion.rows;
@@ -23,9 +23,8 @@ async function handleStatus(_req, res) {
         opened_connections: resultOpened.rows[0].count,
       },
     }
-
-  }
-  res.status(200).json(resultStatus)
+  };
+  return res.status(200).json(resultStatus)
 }
 
-export default handleStatus;
+export default handlerStatus;

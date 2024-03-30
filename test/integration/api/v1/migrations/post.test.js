@@ -1,16 +1,23 @@
-import database from "infra/database";
-async function cleanDatabase() {
-  await database.query('DROP schema public CASCADE;CREATE schema public;')
-}
+
+import { cleanDatabase } from 'test/utils/database';
 beforeAll(cleanDatabase)
 describe('V1 -> Api Migrations', () => {
   test('[POST] /api/v1/migrations should return 200', async () => {
-    const response = await fetch('http://localhost:3000/api/v1/migrations', {
+    const responseFirstRequest = await fetch('http://localhost:3000/api/v1/migrations', {
       method: 'POST'
     });
-    expect(response.status).toBe(200)
-    const responseBody = await response.json();
-    expect(Array.isArray(responseBody)).toBe(true)
+    expect(responseFirstRequest.status).toBe(201);
+    const responseFirstRequestBody = await responseFirstRequest.json();
+    expect(Array.isArray(responseFirstRequestBody)).toBe(true);
+    expect(responseFirstRequestBody.length).toBeGreaterThan(0);
+
+    const responseSecondRequest = await fetch('http://localhost:3000/api/v1/migrations', {
+      method: 'POST'
+    });
+    expect(responseSecondRequest.status).toBe(200);
+    const responseSecondRequestBody = await responseSecondRequest.json();
+    expect(Array.isArray(responseSecondRequestBody)).toBe(true);
+    expect(responseSecondRequestBody.length).toBe(0);
 
   })
 })
