@@ -11,6 +11,7 @@
     "lint:check": "npx prettier --check .",
     "lint:fix": "npx prettier --write .",
     "test": "npx jest --runInBand",
+    "test:cov": "npx jest --coverage",
     "test:watch": "npx jest --watchAll --runInBand",
     "dev:infra:start": "docker compose -f infra/compose.yaml up -d",
     "dev:infra:stop": "docker compose -f infra/compose.yaml stop",

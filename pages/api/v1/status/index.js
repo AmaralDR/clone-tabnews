@@ -8,7 +8,6 @@ async function handlerStatus(_req, res) {
   const [superuserReservedConnectionsValue] = superUserReservedConnections.rows;
 
   const resultOpened = await database.query({
-
     text: `SELECT count(*)::int FROM pg_stat_activity WHERE datname = $1;`,
     values: [process.env.POSTGRES_DB]
   });
