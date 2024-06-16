@@ -1,6 +1,10 @@
 
+import orchestrator from 'test/orchestrator';
 import { cleanDatabase } from 'test/utils/database';
-beforeAll(cleanDatabase)
+beforeAll(async () => {
+  await orchestrator.waitForAllServices();
+  await cleanDatabase();
+})
 describe('V1 -> Api Migrations', () => {
   test('[POST] /api/v1/migrations should return 200', async () => {
     const responseFirstRequest = await fetch('http://localhost:3000/api/v1/migrations', {
