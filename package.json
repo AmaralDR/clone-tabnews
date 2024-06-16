@@ -10,7 +10,7 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "lint:check": "npx prettier --check .",
     "lint:fix": "npx prettier --write .",
-    "pretest": "npm run services:up && npm run wait-for-postgres",
+    "pretest": "npm run services:up",
     "test": "concurrently -n next,jest --hide next -k -s command-jest 'next dev' 'jest --runInBand'",
     "test:cov": "npx jest --coverage",
     "test:watch": "npx jest --watchAll --runInBand",

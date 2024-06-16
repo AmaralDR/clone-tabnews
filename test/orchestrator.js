@@ -5,10 +5,23 @@ async function waitForAllServices() {
   await waitForWebServer();
 
   async function waitForWebServer() {
-    return retry(fetchStatusPage);
+    return retry(fetchStatusPage, {
+      retries: 100,
+      maxTimeout: 1_000
+    });
     async function fetchStatusPage() {
-      const response = await fetch(`${getBaseUrl()}/api/v1/status`);
-      await response.json();
+      try {
+        console.time('fetchStatusPage')
+        const response = await fetch(`${getBaseUrl()}/api/v1/status`);
+        await response.json();
+
+      } catch (error) {
+        throw error;
+      } finally {
+        console.timeEnd('fetchStatusPage')
+      }
+
+
     }
   }
 }
