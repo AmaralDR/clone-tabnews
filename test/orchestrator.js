@@ -13,7 +13,10 @@ async function waitForAllServices() {
       try {
         console.time('fetchStatusPage')
         const response = await fetch(`${getBaseUrl()}/api/v1/status`);
-        await response.json();
+        
+        if(!response.ok){
+          throw new Error('Server Not OK');
+        }
 
       } catch (error) {
         throw error;
