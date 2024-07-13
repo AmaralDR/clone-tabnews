@@ -1,18 +1,15 @@
 const dotenv = require("dotenv");
-const nextJest = require('next/jest');
+const nextJest = require("next/jest");
 
-const MAX_TIMEOUT_TEST = 60_000
+const MAX_TIMEOUT_TEST = 60_000;
 dotenv.config({
-  path: ".env.development"
+  path: ".env.development",
 });
 const createJestConfig = nextJest({
-  dir: '.'
+  dir: ".",
 });
 const jestConfig = createJestConfig({
-  moduleDirectories: [
-    'node_modules',
-    '<rootDir>'
-  ],
-  testTimeout: MAX_TIMEOUT_TEST
+  moduleDirectories: ["node_modules", "<rootDir>"],
+  testTimeout: MAX_TIMEOUT_TEST,
 });
 module.exports = jestConfig;
