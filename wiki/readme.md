@@ -9,4 +9,3 @@
     - sudo apt install postegresql-client
   - MacOs
     - brew install postgresql
-
