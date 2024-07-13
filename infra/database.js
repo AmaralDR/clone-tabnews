@@ -1,4 +1,4 @@
-import { Client } from 'pg';
+import { Client } from "pg";
 
 async function query(queryObject) {
   let client;
@@ -12,7 +12,6 @@ async function query(queryObject) {
   } finally {
     await client?.end();
   }
-
 }
 async function getNewClient() {
   const client = new Client({
@@ -28,17 +27,16 @@ async function getNewClient() {
   return client;
 }
 
-
 export default {
   query,
   getNewClient,
-}
+};
 
 function getSslValues() {
   if (process.env.POSTGRES_CA) {
     return {
-      ca: process.env.POSTGRES_CA
+      ca: process.env.POSTGRES_CA,
     };
   }
-  return process.env.NODE_ENV === 'production';
+  return process.env.NODE_ENV === "production";
 }
