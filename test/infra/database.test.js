@@ -1,4 +1,4 @@
-import { describe, expect, test } from '@jest/globals';
+import { describe, expect, test } from "@jest/globals";
 const { default: database } = require("infra/database");
 
 describe("Database", () => {

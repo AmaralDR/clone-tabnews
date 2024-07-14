@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, test, } from '@jest/globals';
+import { beforeAll, describe, expect, test } from "@jest/globals";
 import orchestrator from "test/orchestrator";
 
 describe("V1 -> Api Status", () => {

@@ -17,7 +17,7 @@ async function waitForAllServices() {
           throw new Error("Server Not OK");
         }
       } catch (error) {
-        console.error(error)
+        console.error(error);
         throw error;
       } finally {
         console.timeEnd("fetchStatusPage");
