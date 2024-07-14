@@ -7,7 +7,7 @@ async function query(queryObject) {
     const result = await client.query(queryObject);
     return result;
   } catch (error) {
-    // console.error(error);
+    console.error(error);
     throw error;
   } finally {
     await client?.end();
@@ -27,11 +27,11 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
-};
-
+}
+export default database;
 function getSslValues() {
   if (process.env.POSTGRES_CA) {
     return {

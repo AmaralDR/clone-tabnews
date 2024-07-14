@@ -21,6 +21,7 @@ async function GET(request, response) {
 
     return response.status(200).json(migrationsPending);
   } catch (error) {
+    console.error(error)
     throw error;
   } finally {
     await dbClient?.end();
@@ -37,6 +38,7 @@ async function POST(request, response) {
     }
     return response.status(200).json(migrationsExecuted);
   } catch (error) {
+    console.error(error)
     throw error;
   } finally {
     await dbClient?.end();
