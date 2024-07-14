@@ -17,6 +17,7 @@ async function waitForAllServices() {
           throw new Error("Server Not OK");
         }
       } catch (error) {
+        console.error(error);
         throw error;
       } finally {
         console.timeEnd("fetchStatusPage");
@@ -28,7 +29,8 @@ function getBaseUrl() {
   return process.env.APP_BASE_URL || "http://localhost:3000";
 }
 
-export default {
+const orchestrator = {
   waitForAllServices,
   getBaseUrl,
 };
+export default orchestrator;
