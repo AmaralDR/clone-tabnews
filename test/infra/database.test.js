@@ -1,6 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-const { default: database } = require("infra/database");
-
+import database from "infra/database";
 describe("Database", () => {
   test("[INFRA] validate throw error database.js", async () => {
     process.env.POSTGRES_CA = "fake_ca";
