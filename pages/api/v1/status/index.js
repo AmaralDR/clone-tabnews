@@ -2,7 +2,7 @@ import database from "infra/database";
 
 async function handlerStatus(_req, res) {
   const result = await database.query(
-    "SHOW server_version; SHOW max_connections; SHOW superuser_reserved_connections;"
+    "SHOW server_version; SHOW max_connections; SHOW superuser_reserved_connections;",
   );
   const [serverVersion, maxConnections, superUserReservedConnections] = result;
   const [serverVersionValue] = serverVersion.rows;
@@ -21,7 +21,7 @@ async function handlerStatus(_req, res) {
         version: serverVersionValue.server_version,
         reserved_connections: parseInt(
           superuserReservedConnectionsValue["superuser_reserved_connections"],
-          10
+          10,
         ),
         max_connections: parseInt(maxConnectionsValue["max_connections"], 10),
         opened_connections: resultOpened.rows[0].count,

@@ -1,12 +1,12 @@
 import database from "infra/database";
 import migrationRunner from "node-pg-migrate";
-import { join } from "node:path";
+import { resolve } from "node:path";
 
 function getOptionsMigrations(dbClient, dryRun = true) {
   return {
     dbClient,
     dryRun,
-    dir: join("infra", "migrations"),
+    dir: resolve("infra", "migrations"),
     direction: "up",
     verbose: true,
     migrationsTable: "pgmigrations",

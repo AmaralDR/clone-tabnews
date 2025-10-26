@@ -30,7 +30,6 @@ const database = {
 };
 export default database;
 function getSslValues() {
-
   if (process.env.POSTGRES_CA) {
     return {
       ca: process.env.POSTGRES_CA,

@@ -12,7 +12,7 @@ describe("[POST] /api/v1/migrations", () => {
           "http://localhost:3000/api/v1/migrations",
           {
             method: "POST",
-          }
+          },
         );
         expect(responseFirstRequest.status).toBe(201);
         const responseFirstRequestBody = await responseFirstRequest.json();
@@ -24,7 +24,7 @@ describe("[POST] /api/v1/migrations", () => {
           "http://localhost:3000/api/v1/migrations",
           {
             method: "POST",
-          }
+          },
         );
         expect(responseSecondRequest.status).toBe(200);
         const responseSecondRequestBody = await responseSecondRequest.json();

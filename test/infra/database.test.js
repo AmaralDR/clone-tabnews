@@ -5,7 +5,7 @@ describe("[INFRA] Database", () => {
     process.env.POSTGRES_CA = "fake_ca";
 
     await expect(database.query("SELECT 1 + 1 result;")).rejects.toThrow(
-      "The server does not support SSL connections"
+      "The server does not support SSL connections",
     );
   });
 });
